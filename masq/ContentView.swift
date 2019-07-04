@@ -10,23 +10,34 @@ import SwiftUI
 
 struct ContentView : View {
     var body: some View {
-        List() {
-            BlogNormalCellView()
-            BlogLinkCellView()
-            BlogFlagCellView()
-            BlogNormalCellView()
-            BlogNormalCellView()
-            BlogFlagCellView()
-            BlogLinkCellView()
+        NavigationView {
+            List {
+                BlogNormalCellView()
+                BlogLinkCellView()
+                BlogFlagCellView()
+                BlogNormalCellView()
+                BlogNormalCellView()
+                BlogFlagCellView()
+                BlogLinkCellView()
+            }
+            .navigationBarTitle(Text("广场"))
+            .navigationBarItems(leading:
+                Button(action: {
+                    print("menu")
+                }, label: {
+                    Image(systemName: "list.dash")
+                        .imageScale(.large)
+                        .foregroundColor(.primary)
+                }), trailing:
+                Button(action: {
+                    print("pencil")
+                }, label: {
+                    Image(systemName: "square.and.pencil")
+                        .imageScale(.large)
+                        .foregroundColor(.primary)
+                })
+            )
         }
-//        NavigationView {
-//
-//        }
-//        .navigationBarItems(trailing:
-//            NavigationLink(destination: BlogNormalCellView(), label: {
-//                Image("pencil")
-//            })
-//        )
     }
 }
 
