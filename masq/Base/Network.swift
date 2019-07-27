@@ -22,12 +22,12 @@ class MASNetwork {
              complement: @escaping ([String: JSON]) -> Void,
              failed: @escaping (String) -> Void) {
         
-        parameters["nick_name"] = MASUser.shared.model.nick_name
+        parameters["nick_name"] = MASUser.shared.model.nickname
         parameters["uid"] = MASUser.shared.model.uidString()
         
         let params = parametersHandler(parameters: parameters)
         let headerParameters: HTTPHeaders = [
-            "usertoken": MASUser.shared.token,
+            "usertoken": MASUser.shared.model.token,
             "timestamp": String.timestampe(),
         ]
         
@@ -62,12 +62,12 @@ class MASNetwork {
               complement: @escaping ([String: JSON]) -> Void,
               failed: @escaping (String) -> Void) {
         
-        parameters["nick_name"] = MASUser.shared.model.nick_name
+        parameters["nick_name"] = MASUser.shared.model.nickname
         parameters["uid"] = MASUser.shared.model.uidString()
         
         let params = parametersHandler(parameters: parameters)
         let headerParameters: HTTPHeaders = [
-            "usertoken": MASUser.shared.token,
+            "usertoken": MASUser.shared.model.token,
             "timestamp": String.timestampe(),
         ]
         

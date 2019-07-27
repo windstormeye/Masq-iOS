@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C3209EE22EB50E500CD535E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C3209ED22EB50E500CD535E /* CloudKit.framework */; };
+		0C3209FA22EBE52100CD535E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3209F922EBE52100CD535E /* User.swift */; };
+		0C3209FE22EBE98500CD535E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3209FD22EBE98500CD535E /* InputView.swift */; };
 		0C7A51BD22CDBE30002E0DA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A51BC22CDBE30002E0DA4 /* AppDelegate.swift */; };
 		0C7A51BF22CDBE30002E0DA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A51BE22CDBE30002E0DA4 /* SceneDelegate.swift */; };
 		0C7A51C122CDBE30002E0DA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A51C022CDBE30002E0DA4 /* ContentView.swift */; };
 		0C7A51C322CDBE32002E0DA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A51C222CDBE32002E0DA4 /* Assets.xcassets */; };
 		0C7A51C622CDBE32002E0DA4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A51C522CDBE32002E0DA4 /* Preview Assets.xcassets */; };
 		0C7A51C922CDBE32002E0DA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A51C722CDBE32002E0DA4 /* LaunchScreen.storyboard */; };
-		0CA71EC022CE44B400A65887 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA71EBF22CE44B400A65887 /* User.swift */; };
 		0CA71EC622CE464B00A65887 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA71EC522CE464B00A65887 /* UserService.swift */; };
 		0CA71EC922CE46AB00A65887 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA71EC822CE46AB00A65887 /* Network.swift */; };
 		0CA71ECC22CE543F00A65887 /* StringTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA71ECB22CE543F00A65887 /* StringTools.swift */; };
@@ -21,10 +23,14 @@
 		0CA71ED222CE5AA700A65887 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 0CA71ED122CE5AA700A65887 /* SwiftyJSON */; };
 		0CA71ED422CE5BB600A65887 /* Static.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA71ED322CE5BB600A65887 /* Static.swift */; };
 		0CA71ED822CE60FB00A65887 /* StringUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA71ED722CE60FB00A65887 /* StringUrl.swift */; };
-		0CC534EF22CDC41B00E4B49C /* BlogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC534EE22CDC41B00E4B49C /* BlogModel.swift */; };
+		0CC534EF22CDC41B00E4B49C /* Blog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC534EE22CDC41B00E4B49C /* Blog.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C3209EB22EB50DC00CD535E /* masq.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = masq.entitlements; sourceTree = "<group>"; };
+		0C3209ED22EB50E500CD535E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		0C3209F922EBE52100CD535E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0C3209FD22EBE98500CD535E /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		0C7A51B922CDBE30002E0DA4 /* masq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = masq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C7A51BC22CDBE30002E0DA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C7A51BE22CDBE30002E0DA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,13 +39,12 @@
 		0C7A51C522CDBE32002E0DA4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0C7A51C822CDBE32002E0DA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C7A51CA22CDBE32002E0DA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0CA71EBF22CE44B400A65887 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0CA71EC522CE464B00A65887 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		0CA71EC822CE46AB00A65887 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		0CA71ECB22CE543F00A65887 /* StringTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTools.swift; sourceTree = "<group>"; };
 		0CA71ED322CE5BB600A65887 /* Static.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Static.swift; sourceTree = "<group>"; };
 		0CA71ED722CE60FB00A65887 /* StringUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUrl.swift; sourceTree = "<group>"; };
-		0CC534EE22CDC41B00E4B49C /* BlogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogModel.swift; sourceTree = "<group>"; };
+		0CC534EE22CDC41B00E4B49C /* Blog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C3209EE22EB50E500CD535E /* CloudKit.framework in Frameworks */,
 				0CA71ED222CE5AA700A65887 /* SwiftyJSON in Frameworks */,
 				0CA71ECF22CE596A00A65887 /* Alamofire in Frameworks */,
 			);
@@ -55,11 +61,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C3209EC22EB50E500CD535E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C3209ED22EB50E500CD535E /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0C3209EF22EB574B00CD535E /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		0C3209FC22EBE83300CD535E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0C3209FD22EBE98500CD535E /* InputView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		0C7A51B022CDBE30002E0DA4 = {
 			isa = PBXGroup;
 			children = (
 				0C7A51BB22CDBE30002E0DA4 /* masq */,
 				0C7A51BA22CDBE30002E0DA4 /* Products */,
+				0C3209EC22EB50E500CD535E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +104,12 @@
 		0C7A51BB22CDBE30002E0DA4 /* masq */ = {
 			isa = PBXGroup;
 			children = (
+				0C3209EB22EB50DC00CD535E /* masq.entitlements */,
 				0C7A51BC22CDBE30002E0DA4 /* AppDelegate.swift */,
 				0C7A51BE22CDBE30002E0DA4 /* SceneDelegate.swift */,
 				0C7A51C022CDBE30002E0DA4 /* ContentView.swift */,
+				0C3209FC22EBE83300CD535E /* View */,
+				0C3209EF22EB574B00CD535E /* Core Data */,
 				0CA71EC722CE46A200A65887 /* Base */,
 				0CA71EC422CE464100A65887 /* Service */,
 				0CA71EC122CE462A00A65887 /* Model */,
@@ -99,26 +132,10 @@
 		0CA71EC122CE462A00A65887 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0CA71EC322CE463500A65887 /* Blog */,
-				0CA71EC222CE463000A65887 /* User */,
+				0CC534EE22CDC41B00E4B49C /* Blog.swift */,
+				0C3209F922EBE52100CD535E /* User.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		0CA71EC222CE463000A65887 /* User */ = {
-			isa = PBXGroup;
-			children = (
-				0CA71EBF22CE44B400A65887 /* User.swift */,
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
-		0CA71EC322CE463500A65887 /* Blog */ = {
-			isa = PBXGroup;
-			children = (
-				0CC534EE22CDC41B00E4B49C /* BlogModel.swift */,
-			);
-			name = Blog;
 			sourceTree = "<group>";
 		};
 		0CA71EC422CE464100A65887 /* Service */ = {
@@ -142,18 +159,10 @@
 		0CA71ECA22CE543400A65887 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				0CA71ED522CE60DA00A65887 /* Tool */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		0CA71ED522CE60DA00A65887 /* Tool */ = {
-			isa = PBXGroup;
-			children = (
 				0CA71ECB22CE543F00A65887 /* StringTools.swift */,
 				0CA71ED722CE60FB00A65887 /* StringUrl.swift */,
 			);
-			path = Tool;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,11 +248,12 @@
 				0C7A51BF22CDBE30002E0DA4 /* SceneDelegate.swift in Sources */,
 				0CA71EC622CE464B00A65887 /* UserService.swift in Sources */,
 				0C7A51C122CDBE30002E0DA4 /* ContentView.swift in Sources */,
-				0CA71EC022CE44B400A65887 /* User.swift in Sources */,
 				0CA71EC922CE46AB00A65887 /* Network.swift in Sources */,
 				0CA71ECC22CE543F00A65887 /* StringTools.swift in Sources */,
-				0CC534EF22CDC41B00E4B49C /* BlogModel.swift in Sources */,
+				0CC534EF22CDC41B00E4B49C /* Blog.swift in Sources */,
 				0CA71ED822CE60FB00A65887 /* StringUrl.swift in Sources */,
+				0C3209FE22EBE98500CD535E /* InputView.swift in Sources */,
+				0C3209FA22EBE52100CD535E /* User.swift in Sources */,
 				0CA71ED422CE5BB600A65887 /* Static.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +390,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = masq/masq.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "masq/Preview\\ Content";
 				DEVELOPMENT_TEAM = U6J5965DZK;
@@ -400,6 +411,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = masq/masq.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "masq/Preview\\ Content";
 				DEVELOPMENT_TEAM = U6J5965DZK;

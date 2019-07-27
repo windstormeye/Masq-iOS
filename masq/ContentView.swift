@@ -9,6 +9,17 @@
 import SwiftUI
 
 struct ContentView : View {
+    
+    @State var showingInputView = false
+    
+    var inputButton: some View {
+            Button(action: { self.showingInputView.toggle() }) {
+                Image(systemName: "square.and.pencil")
+                    .imageScale(.large)
+                    .padding()
+            }
+        }
+    
     var body: some View {
         NavigationView {
             List {
@@ -20,23 +31,26 @@ struct ContentView : View {
                 BlogFlagCellView()
                 BlogLinkCellView()
             }
-            .navigationBarTitle(Text("广场"))
-            .navigationBarItems(leading:
-                Button(action: {
-                    print("menu")
-                }, label: {
-                    Image(systemName: "list.dash")
-                        .imageScale(.large)
-                        .foregroundColor(.primary)
-                }), trailing:
-                Button(action: {
-                    print("pencil")
-                }, label: {
-                    Image(systemName: "square.and.pencil")
-                        .imageScale(.large)
-                        .foregroundColor(.primary)
-                })
-            )
+                .navigationBarTitle(Text("广场"))
+                .navigationBarItems(leading:
+                    Button(action: {
+                    
+                    }, label: {
+                        Image(systemName: "list.dash")
+                            .imageScale(.large)
+                            .foregroundColor(.primary)
+                    }) , trailing:
+                    Button(action: {
+                        self.showingInputView.toggle()
+                    }, label: {
+                        Image(systemName: "square.and.pencil")
+                            .imageScale(.large)
+                            .foregroundColor(.primary)
+                    })
+                )
+                .sheet(isPresented: $showingInputView) {
+                    InputView()
+                }
         }
     }
 }
