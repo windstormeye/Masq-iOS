@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C0157F622EDCC7400B2B7C9 /* MASTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0157F522EDCC7400B2B7C9 /* MASTextView.swift */; };
+		0C0157F822EDCD2C00B2B7C9 /* MASCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0157F722EDCD2C00B2B7C9 /* MASCoreData.swift */; };
 		0C3209EE22EB50E500CD535E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C3209ED22EB50E500CD535E /* CloudKit.framework */; };
 		0C3209FA22EBE52100CD535E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3209F922EBE52100CD535E /* User.swift */; };
 		0C3209FE22EBE98500CD535E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3209FD22EBE98500CD535E /* InputView.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C0157F522EDCC7400B2B7C9 /* MASTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MASTextView.swift; sourceTree = "<group>"; };
+		0C0157F722EDCD2C00B2B7C9 /* MASCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MASCoreData.swift; sourceTree = "<group>"; };
 		0C3209EB22EB50DC00CD535E /* masq.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = masq.entitlements; sourceTree = "<group>"; };
 		0C3209ED22EB50E500CD535E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		0C3209F922EBE52100CD535E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -61,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C0157F422EDCC5A00B2B7C9 /* UIKit View */ = {
+			isa = PBXGroup;
+			children = (
+				0C0157F522EDCC7400B2B7C9 /* MASTextView.swift */,
+			);
+			path = "UIKit View";
+			sourceTree = "<group>";
+		};
 		0C3209EC22EB50E500CD535E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +84,7 @@
 		0C3209EF22EB574B00CD535E /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				0C0157F722EDCD2C00B2B7C9 /* MASCoreData.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -79,6 +92,7 @@
 		0C3209FC22EBE83300CD535E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0C0157F422EDCC5A00B2B7C9 /* UIKit View */,
 				0C3209FD22EBE98500CD535E /* InputView.swift */,
 			);
 			path = View;
@@ -244,11 +258,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C0157F822EDCD2C00B2B7C9 /* MASCoreData.swift in Sources */,
 				0C7A51BD22CDBE30002E0DA4 /* AppDelegate.swift in Sources */,
 				0C7A51BF22CDBE30002E0DA4 /* SceneDelegate.swift in Sources */,
 				0CA71EC622CE464B00A65887 /* UserService.swift in Sources */,
 				0C7A51C122CDBE30002E0DA4 /* ContentView.swift in Sources */,
 				0CA71EC922CE46AB00A65887 /* Network.swift in Sources */,
+				0C0157F622EDCC7400B2B7C9 /* MASTextView.swift in Sources */,
 				0CA71ECC22CE543F00A65887 /* StringTools.swift in Sources */,
 				0CC534EF22CDC41B00E4B49C /* Blog.swift in Sources */,
 				0CA71ED822CE60FB00A65887 /* StringUrl.swift in Sources */,
