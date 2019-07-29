@@ -6,7 +6,6 @@
 //  Copyright © 2019 PJHubs. All rights reserved.
 //
 
-import Foundation
 import CoreData
 
 class MASCoreData {
@@ -31,7 +30,7 @@ class MASCoreData {
 //        container.persistentStoreDescriptions = [local, share]
 //    }
     
-    ///
+    /// 创建一个存储容器
     class func createMASDataModel(completion: @escaping () -> ()) {
         // 名字要与 `.xcdatamodeleld` 文件名一致
         let container = NSPersistentContainer(name: "MASDataModel")

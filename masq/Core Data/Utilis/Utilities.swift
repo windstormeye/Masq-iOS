@@ -9,6 +9,7 @@
 import CoreData
 
 
+// MARK: Managed
 protocol Managed: class, NSFetchRequestResult {
     static var entityName: String { get }
     static var defaultSortDescriptors: [NSSortDescriptor] { get }
@@ -33,3 +34,28 @@ extension Managed where Self: NSManagedObject {
 }
 
 
+// MARK: NSManagedObjectContext
+extension NSManagedObjectContext {
+    func insertObject<A: NSManagedObject>() -> A where A: Managed {
+        guard let obj = NSEntityDescription.insertNewObject(forEntityName: A.entityName, into: self) as? A else { fatalError("Wrong object type") }
+        return obj
+    }
+    
+    func saveOrRollback() -> Bool {
+        do {
+            try save()
+            return true
+        } catch {
+            rollback()
+            return false
+        }
+    }
+
+    /// 批量执行
+    func performChanges(block: @escaping () -> ()) {
+        perform {
+            block()
+            _ = self.saveOrRollback()
+        }
+    }
+}

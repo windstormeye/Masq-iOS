@@ -62,7 +62,7 @@ struct MASTextView: UIViewRepresentable {
         }
         
         func textViewDidChange(_ textView: UITextView) {
-            masTextView.textString = textView.text
+            
         }
         
         func textView(_ textView: UITextView,
@@ -70,7 +70,10 @@ struct MASTextView: UIViewRepresentable {
                       replacementText text: String) -> Bool {
             if text == "\n" {
                 textView.resignFirstResponder()
+                
+                masTextView.textString = textView.text
                 masTextView.onCommitHandler?()
+                
                 return false
             }
             return true

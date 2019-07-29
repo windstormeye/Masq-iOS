@@ -53,7 +53,16 @@ struct InputView: View {
             
             MASTextView(textString: $textString,
                         placeholder: "在 \(nowTimeString) 写下") {
-                print(self.textString)
+                            MASCoreData.shared.persistentContainer.viewContext.performChanges {
+                                print(self.textString)
+                                var article = Article.ViewModel()
+                                article.content = self.textString
+                                article.avatarColor = 0
+                                article.avatarImage = 0
+                                article.type = 0
+                                
+                                _ = Article.insert(viewModel: article)
+                            }
             }
                 .frame(minWidth: 0,
                        maxWidth: .infinity,
