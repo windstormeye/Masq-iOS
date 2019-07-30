@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView : View {
     
     @State var showingInputView = false
+    @State var articleManage = AritcleManager()
     
     var inputButton: some View {
             Button(action: { self.showingInputView.toggle() }) {
@@ -22,14 +23,14 @@ struct ContentView : View {
     
     var body: some View {
         NavigationView {
-            List {
+            List(self.articleManage.articles, id: \.createdAt) { article in
                 BlogNormalCellView()
-                BlogLinkCellView()
-                BlogFlagCellView()
-                BlogNormalCellView()
-                BlogNormalCellView()
-                BlogFlagCellView()
-                BlogLinkCellView()
+//                BlogLinkCellView()
+//                BlogFlagCellView()
+//                BlogNormalCellView()
+//                BlogNormalCellView()
+//                BlogFlagCellView()
+//                BlogLinkCellView()
             }
                 .navigationBarTitle(Text("广场"))
                 .navigationBarItems(leading:
