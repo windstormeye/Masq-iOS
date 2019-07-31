@@ -12,6 +12,8 @@ import Combine
 struct InputView: View {
     @State private var textString = ""
     
+    var commit: (() -> ())?
+    
     let now = Date()
     // 当前时间字符串
     var nowTimeString: String {
@@ -39,7 +41,18 @@ struct InputView: View {
                 Spacer()
                 
                 Button(action: {
-                    self.textString = "2333"
+                    MASCoreData.shared.persistentContainer.viewContext.performChanges {
+                        
+                        var article = Article.ViewModel()
+                        article.content = self.textString
+                        article.avatarColor = 0
+                        article.avatarImage = 0
+                        article.type = 0
+
+                        _ = Article.insert(viewModel: article)
+                        
+                        self.commit?()
+                    }
                 }) {
                     Image(systemName: "paperplane.fill")
                         .imageScale(.large)
@@ -51,20 +64,10 @@ struct InputView: View {
                                         trailing: 20))
             }
             
-            MASTextView(textString: $textString,
-                        placeholder: "在 \(nowTimeString) 写下") {
-                            MASCoreData.shared.persistentContainer.viewContext.performChanges {
-                                print(self.textString)
-                                var article = Article.ViewModel()
-                                article.content = self.textString
-                                article.avatarColor = 0
-                                article.avatarImage = 0
-                                article.type = 0
-                                
-                                _ = Article.insert(viewModel: article)
-                            }
+            MASTextView(placeholder: "在 \(nowTimeString) 写下") { (text) in
+                self.textString = text
             }
-                .frame(minWidth: 0,
+            .frame(minWidth: 0,
                        maxWidth: .infinity,
                        minHeight: 0,
                        maxHeight: .infinity,

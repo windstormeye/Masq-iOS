@@ -26,17 +26,13 @@ class AritcleManager: NSObject, BindableObject {
         let request = Article.sortedFetchRequest
         request.fetchBatchSize = 20
         request.returnsObjectsAsFaults = false
-        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request,
-                                             managedObjectContext: MASCoreData.shared.persistentContainer.viewContext,
-                                             sectionNameKeyPath: nil,
-                                             cacheName: nil)
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: MASCoreData.shared.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         
         super.init()
         
         fetchedResultsController.delegate = self
         
         // 执行方法后，立即返回
-        // NSFetchedResultsController 既是 fetch request 的包装，也是一个获取数据用的 container，我们可以从中获取到数据
         try! fetchedResultsController.performFetch()
         articles = fetchedResultsController.fetchedObjects!
     }
@@ -59,18 +55,13 @@ class AritcleManager: NSObject, BindableObject {
 // MARK: NSFetchedResultsControllerDelegate
 extension AritcleManager: NSFetchedResultsControllerDelegate {
     
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        articles = controller.fetchedObjects as! [Article]
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                    didChangeContentWith diff: CollectionDifference<NSManagedObjectID>) {
-        articles = controller.fetchedObjects as! [Article]
-    }
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+//                    didChangeContentWith diff: CollectionDifference<NSManagedObjectID>) {
+//        articles = controller.fetchedObjects as! [Article]
+//    }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         articles = controller.fetchedObjects as! [Article]
-        
     }
 }
 

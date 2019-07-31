@@ -10,14 +10,10 @@ import SwiftUI
 
 struct MASTextView: UIViewRepresentable {
     
-    @Binding var textString: String
     var placeholder = ""
     
-    // 文本改变
-    var changeHandler:(() -> Void)?
-    // 按下 `return`
-    var onCommitHandler:(() -> Void)?
-    
+    /// 文本改变
+    var changeHandler:((String) -> Void)?
     
     func makeCoordinator() -> MASTextView.Coordinator {
         Coordinator(self)
@@ -28,7 +24,7 @@ struct MASTextView: UIViewRepresentable {
         tv.tintColor = .black
         tv.font = UIFont.systemFont(ofSize: 18)
         tv.delegate = context.coordinator
-        tv.returnKeyType = .done
+        tv.returnKeyType = .default
         tv.text = placeholder
         
         return tv
@@ -36,14 +32,13 @@ struct MASTextView: UIViewRepresentable {
     
     func updateUIView(_ uiView: UITextView,
                       context: UIViewRepresentableContext<MASTextView>) {
-        if context.coordinator.isBeginEditng {
-            uiView.text = textString
-        }
+            
     }
     
     class Coordinator: NSObject, UITextViewDelegate {
         
         var masTextView: MASTextView
+        private var textView: UITextView? = nil
         // 是否开始编辑
         private(set) var isBeginEditng = false
         
@@ -53,7 +48,17 @@ struct MASTextView: UIViewRepresentable {
         }
         
         // MARK: UITextView Delegate
+
+        func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            guard let textView = textView else { return }
+
+            textView.resignFirstResponder()
+        }
+        
+        
         func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+            self.textView = textView
+            
             if !isBeginEditng {
                 isBeginEditng = true
                 textView.text = ""
@@ -62,21 +67,7 @@ struct MASTextView: UIViewRepresentable {
         }
         
         func textViewDidChange(_ textView: UITextView) {
-            
-        }
-        
-        func textView(_ textView: UITextView,
-                      shouldChangeTextIn range: NSRange,
-                      replacementText text: String) -> Bool {
-            if text == "\n" {
-                textView.resignFirstResponder()
-                
-                masTextView.textString = textView.text
-                masTextView.onCommitHandler?()
-                
-                return false
-            }
-            return true
+            masTextView.changeHandler?(textView.text)
         }
     }
 }
