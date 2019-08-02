@@ -11,9 +11,9 @@ import SwiftUI
 import Combine
 
 
-class AritcleManager: NSObject, BindableObject {
+class AritcleManager: NSObject, ObservableObject {
     
-    var willChange = PassthroughSubject<Void, Never>()
+    @Published var willChange = PassthroughSubject<Void, Never>()
     
     var articles = [Article]() {
         willSet {

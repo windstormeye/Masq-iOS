@@ -24,7 +24,9 @@ struct ContentView : View {
     var body: some View {
         NavigationView {
             List(self.articleManage.articles, id: \.createdAt) { article in
-                MASSquareNormalCellView(article: article)
+                BlogLinkCellView()
+//                MASSquareNormalCellView(article: article)
+//                    .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
             }
                 .navigationBarTitle(Text("广场"))
                 .navigationBarItems(leading:
@@ -48,7 +50,6 @@ struct ContentView : View {
                         self.showingInputView.toggle()
                     }
                 }
-                .listStyle(.grouped)
         }
     }
 }
