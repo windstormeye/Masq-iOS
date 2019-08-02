@@ -11,6 +11,7 @@
 		0C0157F822EDCD2C00B2B7C9 /* MASCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0157F722EDCD2C00B2B7C9 /* MASCoreData.swift */; };
 		0C0157FB22EDD13500B2B7C9 /* MASDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C0157F922EDD13500B2B7C9 /* MASDataModel.xcdatamodeld */; };
 		0C0157FE22EDE3DC00B2B7C9 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0157FD22EDE3DC00B2B7C9 /* Article.swift */; };
+		0C1CBB9222F4931B00B2E102 /* MASSquareMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1CBB9122F4931B00B2E102 /* MASSquareMenuView.swift */; };
 		0C3209EE22EB50E500CD535E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C3209ED22EB50E500CD535E /* CloudKit.framework */; };
 		0C3209FA22EBE52100CD535E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3209F922EBE52100CD535E /* User.swift */; };
 		0C3209FE22EBE98500CD535E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3209FD22EBE98500CD535E /* InputView.swift */; };
@@ -40,6 +41,7 @@
 		0C0157F722EDCD2C00B2B7C9 /* MASCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MASCoreData.swift; sourceTree = "<group>"; };
 		0C0157FA22EDD13500B2B7C9 /* MASDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MASDataModel.xcdatamodel; sourceTree = "<group>"; };
 		0C0157FD22EDE3DC00B2B7C9 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		0C1CBB9122F4931B00B2E102 /* MASSquareMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MASSquareMenuView.swift; sourceTree = "<group>"; };
 		0C3209EB22EB50DC00CD535E /* masq.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = masq.entitlements; sourceTree = "<group>"; };
 		0C3209ED22EB50E500CD535E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		0C3209F922EBE52100CD535E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -87,6 +89,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		0C1CBB9022F492F600B2E102 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				0C1CBB9122F4931B00B2E102 /* MASSquareMenuView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		0C3209EC22EB50E500CD535E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +119,7 @@
 		0C3209FC22EBE83300CD535E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0C1CBB9022F492F600B2E102 /* Menu */,
 				0CDB1A0C22F1D89F00CBECB4 /* Base */,
 				0CDB1A0822F1D52500CBECB4 /* Cell */,
 				0CDB1A0622F1D4F600CBECB4 /* Input */,
@@ -343,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C1CBB9222F4931B00B2E102 /* MASSquareMenuView.swift in Sources */,
 				0CDB1A1422F1DE0000CBECB4 /* String+Date.swift in Sources */,
 				0C0157F822EDCD2C00B2B7C9 /* MASCoreData.swift in Sources */,
 				0CDB1A0022EDF63C00CBECB4 /* Utilities.swift in Sources */,

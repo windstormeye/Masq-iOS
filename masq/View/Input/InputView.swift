@@ -54,7 +54,7 @@ struct InputView: View {
                         self.commit?()
                     }
                 }) {
-                    Image(systemName: "paperplane.fill")
+                    Image(systemName: "checkmark")
                         .imageScale(.large)
                         .foregroundColor(.primary)
                 }

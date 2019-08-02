@@ -12,6 +12,7 @@ struct ContentView : View {
     
     @State var showingInputView = false
     @State var articleManage = AritcleManager()
+    @State var isShowMenu = false
     
     var inputButton: some View {
             Button(action: { self.showingInputView.toggle() }) {
@@ -23,33 +24,37 @@ struct ContentView : View {
     
     var body: some View {
         NavigationView {
-            List(self.articleManage.articles, id: \.createdAt) { article in
-                BlogLinkCellView()
-//                MASSquareNormalCellView(article: article)
-//                    .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
-            }
-                .navigationBarTitle(Text("广场"))
-                .navigationBarItems(leading:
-                    Button(action: {
-                    
-                    }, label: {
-                        Image(systemName: "list.dash")
-                            .imageScale(.large)
-                            .foregroundColor(.primary)
-                    }) , trailing:
-                    Button(action: {
-                        self.showingInputView.toggle()
-                    }, label: {
-                        Image(systemName: "square.and.pencil")
-                            .imageScale(.large)
-                            .foregroundColor(.primary)
-                    })
-                )
-                .sheet(isPresented: $showingInputView) {
-                    InputView {
-                        self.showingInputView.toggle()
-                    }
+            VStack {
+                if self.isShowMenu {
+                    MASSquareMenuView()
                 }
+                List(self.articleManage.articles, id: \.createdAt) { article in
+                    MASSquareNormalCellView(article: article)
+                        .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                }
+                    .navigationBarTitle(Text("广场"))
+                    .navigationBarItems(leading:
+                        Button(action: {
+                            self.isShowMenu.toggle()
+                        }, label: {
+                            Image(systemName: "list.dash")
+                                .imageScale(.large)
+                                .foregroundColor(.primary)
+                        }) , trailing:
+                        Button(action: {
+                            self.showingInputView.toggle()
+                        }, label: {
+                            Image(systemName: "square.and.pencil")
+                                .imageScale(.large)
+                                .foregroundColor(.primary)
+                        })
+                    )
+                    .sheet(isPresented: $showingInputView) {
+                        InputView {
+                            self.showingInputView.toggle()
+                        }
+                    }
+            }
         }
     }
 }

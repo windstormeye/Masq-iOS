@@ -11,6 +11,8 @@ import SwiftUI
 extension Color {
     static func avatar(_ index: Int) -> Color {
         switch index {
+        case -1:
+        return Color.clear
         case 0:
             return Color.pink
         case 1:
