@@ -67,7 +67,7 @@ struct InputView: View {
             MASTextView(placeholder: "在 \(nowTimeString) 写下") { (text) in
                 self.textString = text
             }
-            .frame(minWidth: 0,
+                .frame(minWidth: 0,
                        maxWidth: .infinity,
                        minHeight: 0,
                        maxHeight: .infinity,

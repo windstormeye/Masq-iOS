@@ -9,15 +9,28 @@
 import SwiftUI
 
 struct MASSquareMenuView: View {
+    @EnvironmentObject var squareListViewModel: MASSquareListViewModel
+    
     var body: some View {
-        VStack(spacing: 10) {
-            Text("Hello World!")
+        GeometryReader { geo in
+            VStack(spacing: 10) {
+                Text("Hello World!")
+                    .foregroundColor(.white)
+                Text("Hello World!")
+                    .foregroundColor(.white)
+                Text("Hello World!")
                 .foregroundColor(.white)
-            Text("Hello World!")
-                .foregroundColor(.white)
-            Text("Hello World!")
-            .foregroundColor(.white)
+            }
         }
+        .onTapGesture {
+            
+        }
+        .navigationBarItems(leading: Button(action: {
+            self.squareListViewModel.isShowMenu = false
+            
+        }, label: {
+            Text("Hello World!")
+        }))
             .background(Color.black)
     }
 }

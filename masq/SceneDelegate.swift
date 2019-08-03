@@ -22,7 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         MASCoreData.createMASDataModel {
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
-                window.rootViewController = UIHostingController(rootView: ContentView())
+                window.rootViewController = UIHostingController(rootView:
+                    MASSquareHostView().environmentObject(MASSquareListViewModel()))
                 self.window = window
                 window.makeKeyAndVisible()
             }
