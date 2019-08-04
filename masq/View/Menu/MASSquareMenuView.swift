@@ -9,36 +9,36 @@
 import SwiftUI
 
 struct MASSquareMenuView: View {
-    @EnvironmentObject var squareListViewModel: MASSquareListViewModel
+
+    @Binding var isShowMenu: Bool
     
     var body: some View {
         GeometryReader { geo in
-            VStack(spacing: 10) {
+            
+            Image(systemName: "triangle.fill")
+                .padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 0))
+                
+            VStack(alignment: .leading) {
                 Text("Hello World!")
                     .foregroundColor(.white)
+                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 5, trailing: 10))
                 Text("Hello World!")
                     .foregroundColor(.white)
+                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                 Text("Hello World!")
-                .foregroundColor(.white)
+                    .foregroundColor(.white)
+                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 10, trailing: 10))
             }
-        }
-        .onTapGesture {
+                .background(Color.black)
+                .cornerRadius(5)
+            .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 0))
             
+            Spacer()
         }
-        .navigationBarItems(leading: Button(action: {
-            self.squareListViewModel.isShowMenu = false
-            
-        }, label: {
-            Text("Hello World!")
-        }))
-            .background(Color.black)
+            .background(Color.white.opacity(0.01))
+            .frame(minWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.height)
+            .onTapGesture {
+                self.isShowMenu.toggle()
+            }
     }
 }
-
-#if DEBUG
-struct MASSquareMenuView_Previews: PreviewProvider {
-    static var previews: some View {
-        MASSquareMenuView()
-    }
-}
-#endif

@@ -13,32 +13,44 @@ struct MASSquareHostView: View {
     @EnvironmentObject var squareListViewModel: MASSquareListViewModel
 
     @State private var showingInputView = false
+    @State private var showingMenuView = false
     
     
     var body: some View {
         NavigationView {
-            MASSquareListView(squareListViewModel: squareListViewModel)
-                .navigationBarTitle(Text("广场"))
-                .navigationBarItems(leading:
-                    NavigationLink(destination: MASSquareMenuView(), isActive: $squareListViewModel.isShowMenu) {
-                        Image(systemName: "list.dash")
-                        .imageScale(.large)
-                        .foregroundColor(.primary)
+            GeometryReader { geo in
+                AnyView(
+                    ZStack {
+                        MASSquareListView(squareListViewModel: self.squareListViewModel)
+                        
+                        if self.showingMenuView {
+                            MASSquareMenuView(isShowMenu: self.$showingMenuView)
+                        }
                     }
-                    , trailing:
-                    Button(action: {
-                        self.showingInputView.toggle()
-                    }, label: {
-                        Image(systemName: "square.and.pencil")
+                    .navigationBarTitle(Text("广场"))
+                    .navigationBarItems(leading:
+                        Button(action: {
+                            self.showingMenuView.toggle()
+                        }, label: {
+                            Image(systemName: "list.dash")
                             .imageScale(.large)
                             .foregroundColor(.primary)
-                    })
-                )
-                .sheet(isPresented: $showingInputView) {
-                    InputView {
-                        self.showingInputView.toggle()
+                        }), trailing:
+                        Button(action: {
+                            self.showingInputView.toggle()
+                        }, label: {
+                            Image(systemName: "square.and.pencil")
+                                .imageScale(.large)
+                                .foregroundColor(.primary)
+                        })
+                    )
+                        .sheet(isPresented: self.$showingInputView) {
+                        InputView {
+                            self.showingInputView.toggle()
+                        }
                     }
-                }
+                )
+            }
         }
     }
 }
