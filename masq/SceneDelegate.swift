@@ -26,7 +26,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 window.rootViewController = UIHostingController(rootView:
                     MASSquareHostView()
                         .environmentObject(MASSquareListViewModel())
-                        .environmentObject(MASSquareMenuViewModel())
                 )
                 
                 self.window = window

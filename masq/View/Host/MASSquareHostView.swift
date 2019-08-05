@@ -24,16 +24,27 @@ struct MASSquareHostView: View {
                         MASSquareListView(squareListViewModel: self.squareListViewModel)
                         if self.showingMenuView {
                             MASSquareMenuView(isShowMenu: self.$showingMenuView, content: {
-                                MASSquareMenuCell(itemName: "笔记", itemImageName: "square.and.pencil") {
-                                    InputView()
+                                Group {
+                                    MASSquareMenuCell(itemName: "笔记", itemImageName: "square.and.pencil") {
+                                        InputView()
+                                    }
+                                    MASSquareMenuCell(itemName: "广场", itemImageName: "burst") {
+                                        InputView()
+                                    }
+                                    MASSquareMenuCell(itemName: "通知", itemImageName: "bell") {
+                                        InputView()
+                                    }
+                                    MASSquareMenuCell(itemName: "收藏", itemImageName: "pin") {
+                                        InputView()
+                                    }
+                                    MASSquareMenuCell(itemName: "设置", itemImageName: "ellipsis.circle") {
+                                        InputView()
+                                    }
                                 }
-//                                MASSquareMenuCell(itemName: "笔记", itemImageName: "square.and.pencil") {
-//                                    InputView()
-//                                }
                             })
                         }
                     }
-                        .navigationBarTitle(Text("广场"))
+                        .navigationBarTitle(Text("广场"), displayMode: .inline)
                         .navigationBarItems(leading:
                             Button(action: {
                                 self.showingMenuView.toggle()

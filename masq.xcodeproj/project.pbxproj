@@ -32,12 +32,11 @@
 		0CA71ED822CE60FB00A65887 /* String+Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA71ED722CE60FB00A65887 /* String+Url.swift */; };
 		0CC534EF22CDC41B00E4B49C /* Blog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC534EE22CDC41B00E4B49C /* Blog.swift */; };
 		0CDB1A0022EDF63C00CBECB4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB19FF22EDF63C00CBECB4 /* Utilities.swift */; };
-		0CDB1A0B22F1D79800CBECB4 /* SquareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB1A0A22F1D79800CBECB4 /* SquareCell.swift */; };
+		0CDB1A0B22F1D79800CBECB4 /* MASSquareListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB1A0A22F1D79800CBECB4 /* MASSquareListCellView.swift */; };
 		0CDB1A0E22F1D8B100CBECB4 /* MASAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB1A0D22F1D8B100CBECB4 /* MASAvatarView.swift */; };
 		0CDB1A1222F1D93200CBECB4 /* Color+Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB1A1122F1D93200CBECB4 /* Color+Avatar.swift */; };
 		0CDB1A1422F1DE0000CBECB4 /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB1A1322F1DE0000CBECB4 /* String+Date.swift */; };
 		0CE50B5922F5E1AD00596B49 /* MultilineTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE50B5822F5E1AD00596B49 /* MultilineTextView.swift */; };
-		0CE50B5B22F7EEAF00596B49 /* MASSquareMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE50B5A22F7EEAF00596B49 /* MASSquareMenuModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,12 +66,11 @@
 		0CA71ED722CE60FB00A65887 /* String+Url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Url.swift"; sourceTree = "<group>"; };
 		0CC534EE22CDC41B00E4B49C /* Blog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blog.swift; sourceTree = "<group>"; };
 		0CDB19FF22EDF63C00CBECB4 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		0CDB1A0A22F1D79800CBECB4 /* SquareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareCell.swift; sourceTree = "<group>"; };
+		0CDB1A0A22F1D79800CBECB4 /* MASSquareListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MASSquareListCellView.swift; sourceTree = "<group>"; };
 		0CDB1A0D22F1D8B100CBECB4 /* MASAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MASAvatarView.swift; sourceTree = "<group>"; };
 		0CDB1A1122F1D93200CBECB4 /* Color+Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Avatar.swift"; sourceTree = "<group>"; };
 		0CDB1A1322F1DE0000CBECB4 /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
 		0CE50B5822F5E1AD00596B49 /* MultilineTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextView.swift; sourceTree = "<group>"; };
-		0CE50B5A22F7EEAF00596B49 /* MASSquareMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MASSquareMenuModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +114,7 @@
 		0C1CBB9522F52C2E00B2E102 /* Square */ = {
 			isa = PBXGroup;
 			children = (
+				0CDB1A0A22F1D79800CBECB4 /* MASSquareListCellView.swift */,
 				0C7A51C022CDBE30002E0DA4 /* MASSquareListView.swift */,
 			);
 			path = Square;
@@ -133,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				0C1CBB9822F52CA500B2E102 /* MASSquareViewModel.swift */,
-				0CE50B5A22F7EEAF00596B49 /* MASSquareMenuModel.swift */,
 			);
 			path = Square;
 			sourceTree = "<group>";
@@ -164,7 +162,6 @@
 				0C1CBB9422F52C2100B2E102 /* List */,
 				0C1CBB9022F492F600B2E102 /* Menu */,
 				0CDB1A0C22F1D89F00CBECB4 /* Base */,
-				0CDB1A0822F1D52500CBECB4 /* Cell */,
 				0CDB1A0622F1D4F600CBECB4 /* Input */,
 			);
 			path = View;
@@ -284,22 +281,6 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
-		0CDB1A0822F1D52500CBECB4 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				0CDB1A0922F1D73500CBECB4 /* Square */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		0CDB1A0922F1D73500CBECB4 /* Square */ = {
-			isa = PBXGroup;
-			children = (
-				0CDB1A0A22F1D79800CBECB4 /* SquareCell.swift */,
-			);
-			path = Square;
-			sourceTree = "<group>";
-		};
 		0CDB1A0C22F1D89F00CBECB4 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,13 +388,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C53BB5922F5379100BC4430 /* MASSquareHostView.swift in Sources */,
-				0CE50B5B22F7EEAF00596B49 /* MASSquareMenuModel.swift in Sources */,
 				0C1CBB9222F4931B00B2E102 /* MASSquareMenuView.swift in Sources */,
 				0CDB1A1422F1DE0000CBECB4 /* String+Date.swift in Sources */,
 				0C0157F822EDCD2C00B2B7C9 /* MASCoreData.swift in Sources */,
 				0CDB1A0022EDF63C00CBECB4 /* Utilities.swift in Sources */,
 				0C7A51BD22CDBE30002E0DA4 /* AppDelegate.swift in Sources */,
-				0CDB1A0B22F1D79800CBECB4 /* SquareCell.swift in Sources */,
+				0CDB1A0B22F1D79800CBECB4 /* MASSquareListCellView.swift in Sources */,
 				0C7A51BF22CDBE30002E0DA4 /* SceneDelegate.swift in Sources */,
 				0CDB1A0E22F1D8B100CBECB4 /* MASAvatarView.swift in Sources */,
 				0CA71EC622CE464B00A65887 /* UserService.swift in Sources */,
