@@ -21,9 +21,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //TODO: 这么做有些粗暴，不能数据库创建失败就页面白屏
         MASCoreData.createMASDataModel {
             if let windowScene = scene as? UIWindowScene {
+                
                 let window = UIWindow(windowScene: windowScene)
                 window.rootViewController = UIHostingController(rootView:
-                    MASSquareHostView().environmentObject(MASSquareListViewModel()))
+                    MASSquareHostView()
+                        .environmentObject(MASSquareListViewModel())
+                        .environmentObject(MASSquareMenuViewModel())
+                )
+                
                 self.window = window
                 window.makeKeyAndVisible()
             }

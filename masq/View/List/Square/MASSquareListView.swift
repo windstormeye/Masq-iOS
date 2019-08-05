@@ -21,14 +21,5 @@ struct MASSquareListView : View {
     }
 }
 
-#if DEBUG
-//struct ContentView_Previews : PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            MASSquareListView()
-//            MASSquareListView().environment(\.colorScheme, .dark)
-//        }
-//    }
-//}
-#endif
+
 

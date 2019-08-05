@@ -22,33 +22,39 @@ struct MASSquareHostView: View {
                 AnyView(
                     ZStack {
                         MASSquareListView(squareListViewModel: self.squareListViewModel)
-                        
                         if self.showingMenuView {
-                            MASSquareMenuView(isShowMenu: self.$showingMenuView)
+                            MASSquareMenuView(isShowMenu: self.$showingMenuView, content: {
+                                MASSquareMenuCell(itemName: "笔记", itemImageName: "square.and.pencil") {
+                                    InputView()
+                                }
+//                                MASSquareMenuCell(itemName: "笔记", itemImageName: "square.and.pencil") {
+//                                    InputView()
+//                                }
+                            })
                         }
                     }
-                    .navigationBarTitle(Text("广场"))
-                    .navigationBarItems(leading:
-                        Button(action: {
-                            self.showingMenuView.toggle()
-                        }, label: {
-                            Image(systemName: "list.dash")
-                            .imageScale(.large)
-                            .foregroundColor(.primary)
-                        }), trailing:
-                        Button(action: {
-                            self.showingInputView.toggle()
-                        }, label: {
-                            Image(systemName: "square.and.pencil")
+                        .navigationBarTitle(Text("广场"))
+                        .navigationBarItems(leading:
+                            Button(action: {
+                                self.showingMenuView.toggle()
+                            }, label: {
+                                Image(systemName: "list.dash")
                                 .imageScale(.large)
                                 .foregroundColor(.primary)
-                        })
-                    )
-                        .sheet(isPresented: self.$showingInputView) {
-                        InputView {
-                            self.showingInputView.toggle()
+                            }), trailing:
+                            Button(action: {
+                                self.showingInputView.toggle()
+                            }, label: {
+                                Image(systemName: "square.and.pencil")
+                                    .imageScale(.large)
+                                    .foregroundColor(.primary)
+                            })
+                        )
+                            .sheet(isPresented: self.$showingInputView) {
+                            InputView {
+                                self.showingInputView.toggle()
+                            }
                         }
-                    }
                 )
             }
         }

@@ -37,6 +37,7 @@
 		0CDB1A1222F1D93200CBECB4 /* Color+Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB1A1122F1D93200CBECB4 /* Color+Avatar.swift */; };
 		0CDB1A1422F1DE0000CBECB4 /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB1A1322F1DE0000CBECB4 /* String+Date.swift */; };
 		0CE50B5922F5E1AD00596B49 /* MultilineTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE50B5822F5E1AD00596B49 /* MultilineTextView.swift */; };
+		0CE50B5B22F7EEAF00596B49 /* MASSquareMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE50B5A22F7EEAF00596B49 /* MASSquareMenuModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		0CDB1A1122F1D93200CBECB4 /* Color+Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Avatar.swift"; sourceTree = "<group>"; };
 		0CDB1A1322F1DE0000CBECB4 /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
 		0CE50B5822F5E1AD00596B49 /* MultilineTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextView.swift; sourceTree = "<group>"; };
+		0CE50B5A22F7EEAF00596B49 /* MASSquareMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MASSquareMenuModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				0C1CBB9822F52CA500B2E102 /* MASSquareViewModel.swift */,
+				0CE50B5A22F7EEAF00596B49 /* MASSquareMenuModel.swift */,
 			);
 			path = Square;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C53BB5922F5379100BC4430 /* MASSquareHostView.swift in Sources */,
+				0CE50B5B22F7EEAF00596B49 /* MASSquareMenuModel.swift in Sources */,
 				0C1CBB9222F4931B00B2E102 /* MASSquareMenuView.swift in Sources */,
 				0CDB1A1422F1DE0000CBECB4 /* String+Date.swift in Sources */,
 				0C0157F822EDCD2C00B2B7C9 /* MASCoreData.swift in Sources */,

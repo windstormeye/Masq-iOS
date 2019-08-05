@@ -8,30 +8,51 @@
 
 import SwiftUI
 
-struct MASSquareMenuView: View {
+struct MASSquareMenuCell<Content: View>: View {
+    var itemName: String
+    var itemImageName: String
+    var content: () -> Content
 
+    var body: some View {
+        NavigationLink(destination: content()) {
+            HStack {
+                // 限定 `Image`
+                HStack {
+                    Image(systemName: itemImageName)
+                        .imageScale(.medium)
+                        .foregroundColor(.white)
+                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 20))
+                }
+                    .frame(width: 50)
+
+                Text(itemName)
+
+                Spacer()
+            }
+                .foregroundColor(.white)
+                .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                .frame(width: 130)
+        }
+    }
+}
+
+struct MASSquareMenuView<Content: View>: View {
     @Binding var isShowMenu: Bool
+
+    var content: () -> Content
     
     var body: some View {
-        GeometryReader { geo in
-            
+        GeometryReader { _ in
+            // 顶部箭头
             Image(systemName: "triangle.fill")
                 .padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 0))
-                
+            
             VStack(alignment: .leading) {
-                Text("Hello World!")
-                    .foregroundColor(.white)
-                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 5, trailing: 10))
-                Text("Hello World!")
-                    .foregroundColor(.white)
-                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-                Text("Hello World!")
-                    .foregroundColor(.white)
-                    .padding(EdgeInsets(top: 5, leading: 10, bottom: 10, trailing: 10))
+                self.content()
             }
                 .background(Color.black)
                 .cornerRadius(5)
-            .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 0))
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 0))
             
             Spacer()
         }
