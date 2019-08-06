@@ -46,7 +46,7 @@ struct MASSquareMenuView<Content: View>: View {
         GeometryReader { _ in
             // 顶部箭头
             Image(systemName: "triangle.fill")
-                .padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 0))
+                .padding(EdgeInsets(top: 5, leading: 25, bottom: 0, trailing: 0))
             
             VStack(alignment: .leading) {
                 self.content()
