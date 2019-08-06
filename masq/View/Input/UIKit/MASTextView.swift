@@ -25,6 +25,7 @@ struct MASTextView: UIViewRepresentable {
         tv.font = UIFont.systemFont(ofSize: 18)
         tv.delegate = context.coordinator
         tv.returnKeyType = .default
+        tv.becomeFirstResponder()
         tv.text = placeholder
         
         return tv

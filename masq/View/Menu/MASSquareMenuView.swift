@@ -8,24 +8,59 @@
 
 import SwiftUI
 
-struct MASSquareMenuView: View {
+struct MASSquareMenuCell<Content: View>: View {
+    var itemName: String
+    var itemImageName: String
+    var content: () -> Content
+    
     var body: some View {
-        VStack(spacing: 10) {
-            Text("Hello World!")
+        NavigationLink(destination: content()) {
+            HStack {
+                // 限定 `Image`
+                HStack {
+                    Image(systemName: itemImageName)
+                        .imageScale(.medium)
+                        .foregroundColor(.white)
+                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 20))
+                }
+                    .frame(width: 50)
+
+                Text(itemName)
+
+                Spacer()
+            }
                 .foregroundColor(.white)
-            Text("Hello World!")
-                .foregroundColor(.white)
-            Text("Hello World!")
-            .foregroundColor(.white)
+                .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                .frame(width: 130)
         }
-            .background(Color.black)
     }
 }
 
-#if DEBUG
-struct MASSquareMenuView_Previews: PreviewProvider {
-    static var previews: some View {
-        MASSquareMenuView()
+struct MASSquareMenuView<Content: View>: View {
+    
+    @Binding var isShowMenu: Bool
+    var content: () -> Content
+    
+    
+    var body: some View {
+        GeometryReader { _ in
+            // 顶部箭头
+            Image(systemName: "triangle.fill")
+                .padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 0))
+            
+            VStack(alignment: .leading) {
+                self.content()
+            }
+                .background(Color.black)
+                .cornerRadius(5)
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 0))
+            
+            Spacer()
+        }
+            .background(Color.white.opacity(0.01))
+            .frame(minWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.height)
+            .onTapGesture {
+                self.isShowMenu.toggle()
+            }
     }
 }
-#endif
