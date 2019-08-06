@@ -10,25 +10,25 @@ import Foundation
 import CryptoKit
 import CommonCrypto
 
-extension MASUser {
-    /// 创建用户
-    func create(phoneNumber: String,
-                authCode: String,
-                password: String,
-                complatedHandler: @escaping (() -> Void),
-                failedHandler: ((Error) -> Void)) {
-        var params = [
-            "phoneNumber": phoneNumber,
-            "password": (password + phoneNumber.reversed()).sha256,
-            "authCode": authCode
-        ]
-        
-        MASNetwork.shared.post(path: .userCreate,
-                               parameters: &params,
-                               complement: {
-                                print($0)
-        }) {
-            print($0)
-        }
-    }
-}
+//extension MASUser {
+//    /// 创建用户
+//    func create(phoneNumber: String,
+//                authCode: String,
+//                password: String,
+//                complatedHandler: @escaping (() -> Void),
+//                failedHandler: ((Error) -> Void)) {
+//        var params = [
+//            "phoneNumber": phoneNumber,
+//            "password": (password + phoneNumber.reversed()).sha256,
+//            "authCode": authCode
+//        ]
+//        
+//        MASNetwork.shared.post(path: .userCreate,
+//                               parameters: &params,
+//                               complement: {
+//                                print($0)
+//        }) {
+//            print($0)
+//        }
+//    }
+//}
