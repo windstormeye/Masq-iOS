@@ -17,7 +17,7 @@ class AritcleManager: NSObject, ObservableObject {
     
     var articles = [Article]() {
         willSet {
-            willChange.send(())
+            willChange.send()
         }
     }
     fileprivate var fetchedResultsController: NSFetchedResultsController<Article>
@@ -54,11 +54,6 @@ class AritcleManager: NSObject, ObservableObject {
 
 // MARK: NSFetchedResultsControllerDelegate
 extension AritcleManager: NSFetchedResultsControllerDelegate {
-    
-//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-//                    didChangeContentWith diff: CollectionDifference<NSManagedObjectID>) {
-//        articles = controller.fetchedObjects as! [Article]
-//    }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         articles = controller.fetchedObjects as! [Article]

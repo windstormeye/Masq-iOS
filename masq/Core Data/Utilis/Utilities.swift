@@ -36,8 +36,8 @@ extension Managed where Self: NSManagedObject {
 
 // MARK: NSManagedObjectContext
 extension NSManagedObjectContext {
-    func insertObject<A: NSManagedObject>() -> A where A: Managed {
-        guard let obj = NSEntityDescription.insertNewObject(forEntityName: A.entityName, into: self) as? A else { fatalError("Wrong object type") }
+    func insertObject<T: NSManagedObject>() -> T where T: Managed {
+        guard let obj = NSEntityDescription.insertNewObject(forEntityName: T.entityName, into: self) as? T else { fatalError("error object type") }
         return obj
     }
     

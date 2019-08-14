@@ -22,6 +22,7 @@ struct MASSquareHostView: View {
                 AnyView(
                     ZStack {
                         MASSquareListView(squareListViewModel: self.squareListViewModel)
+                        
                         if self.showingMenuView {
                             MASSquareMenuView(isShowMenu: self.$showingMenuView) {
                                 Group {

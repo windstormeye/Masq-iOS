@@ -13,11 +13,23 @@ struct MASSquareListView : View {
     @State var articleManage = AritcleManager()
     @State var squareListViewModel: MASSquareListViewModel
     
+    var a = ["2333", "2333", "2333", "2333"]
+    
+    var onDelete: ((Int) -> ())?
+    
     var body: some View {
-        List(self.articleManage.articles, id: \.createdAt) { article in
-            MASSquareNormalCellView(article: article)
+        List {
+            ForEach(self.articleManage.articles, id: \.createdAt) { article in
+                MASSquareNormalCellView(article: article)
                 .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+            }
+            .onDelete {
+                guard let index = Array($0).first else { return }
+                // TODO: 删除
+                self.articleManage.articles.remove(at: index)
+            }
         }
+    
     }
 }
 
