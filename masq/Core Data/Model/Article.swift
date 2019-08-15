@@ -60,7 +60,7 @@ extension AritcleManager: NSFetchedResultsControllerDelegate {
     }
 }
 
-final class Article: NSManagedObject {
+final class Article: NSManagedObject, Identifiable {
     @NSManaged var content: String
     @NSManaged var type: Int16
     @NSManaged var uid: Int32

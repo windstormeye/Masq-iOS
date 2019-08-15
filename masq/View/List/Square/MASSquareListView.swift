@@ -19,13 +19,13 @@ struct MASSquareListView : View {
     
     var body: some View {
         List {
-            ForEach(self.articleManage.articles, id: \.createdAt) { article in
+            ForEach(self.articleManage.articles) { article in
                 MASSquareNormalCellView(article: article)
                 .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
             }
             .onDelete {
                 guard let index = Array($0).first else { return }
-                // TODO: 删除
+                // TODO: 连接 Core Data 删除
                 self.articleManage.articles.remove(at: index)
             }
         }
