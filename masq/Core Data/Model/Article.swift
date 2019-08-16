@@ -13,13 +13,8 @@ import Combine
 
 class AritcleManager: NSObject, ObservableObject {
     
-    @Published var willChange = PassthroughSubject<Void, Never>()
+    @Published var articles = [Article]()
     
-    var articles = [Article]() {
-        willSet {
-            willChange.send()
-        }
-    }
     fileprivate var fetchedResultsController: NSFetchedResultsController<Article>
     
     override init() {
