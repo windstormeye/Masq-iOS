@@ -13,7 +13,7 @@ import Combine
 
 class AritcleManager: NSObject, ObservableObject {
     
-    @Published var articles = [Article]()
+    @Published var articles: [Article] = []
     
     fileprivate var fetchedResultsController: NSFetchedResultsController<Article>
     
@@ -64,10 +64,7 @@ final class Article: NSManagedObject, Identifiable {
     @NSManaged internal var createdAt: Date
     
     static func insert(viewModel: Article.ViewModel) -> Article {
-        
-        let context = MASCoreData.shared.persistentContainer.viewContext
-        
-        let p_article: Article = context.insertObject()
+        let p_article: Article = MASCoreData.shared.persistentContainer.viewContext.insertObject()
         p_article.content = viewModel.content
         p_article.avatarColor = Int16(viewModel.avatarColor)
         p_article.avatarImage = Int16(viewModel.avatarImage)
@@ -76,6 +73,12 @@ final class Article: NSManagedObject, Identifiable {
         p_article.createdAt = Date()
         
         return p_article
+    }
+    
+    func delete() {
+        MASCoreData.shared.persistentContainer.viewContext.performChanges {
+            MASCoreData.shared.persistentContainer.viewContext.delete(self)
+        }
     }
 }
 

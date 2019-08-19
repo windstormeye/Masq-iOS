@@ -7,11 +7,11 @@
 //
 
 import SwiftUI
+import Combine
 
 struct MASSquareHostView: View {
     
-    @EnvironmentObject var squareListViewModel: MASSquareListViewModel
-
+    @State private var showingSheet = false
     @State private var showingInputView = false
     @State private var showingMenuView = false
     
@@ -21,7 +21,7 @@ struct MASSquareHostView: View {
             GeometryReader { geo in
                 AnyView(
                     ZStack {
-                        MASSquareListView(squareListViewModel: self.squareListViewModel)
+                        MASSquareListView(showingSheet: self.$showingSheet)
                         
                         if self.showingMenuView {
                             MASSquareMenuView(isShowMenu: self.$showingMenuView) {
@@ -72,11 +72,3 @@ struct MASSquareHostView: View {
         }
     }
 }
-
-#if DEBUG
-struct MASSquareHostView_Previews: PreviewProvider {
-    static var previews: some View {
-        MASSquareHostView()
-    }
-}
-#endif
