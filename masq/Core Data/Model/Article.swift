@@ -12,8 +12,9 @@ import Combine
 
 
 class AritcleManager: NSObject, ObservableObject {
+    var objectWillChange: ObservableObjectPublisher = ObservableObjectPublisher()
     
-    @Published var articles: [Article] = []
+    var articles: [Article] = []
     
     fileprivate var fetchedResultsController: NSFetchedResultsController<Article>
     
@@ -30,6 +31,7 @@ class AritcleManager: NSObject, ObservableObject {
         // 执行方法后，立即返回
         try! fetchedResultsController.performFetch()
         articles = fetchedResultsController.fetchedObjects!
+        objectWillChange.send()
     }
     
 //    func fetch(page: Int) {
@@ -52,6 +54,7 @@ extension AritcleManager: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         articles = controller.fetchedObjects as! [Article]
+        objectWillChange.send()
     }
 }
 

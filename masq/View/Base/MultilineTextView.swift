@@ -23,7 +23,7 @@ struct MultilineTextView: UIViewRepresentable  {
         }
         
         func textViewDidChange(_ textView: UITextView) {
-            self.text.value = textView.text ?? ""
+            self.text.wrappedValue = textView.text ?? ""
         }
         
         func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
