@@ -14,6 +14,7 @@ struct MASSquareHostView: View {
     @State private var showingSheet = false
     @State private var showingInputView = false
     @State private var showingMenuView = false
+    @State private var showingSeachBar = false
     
     
     var body: some View {
@@ -45,6 +46,7 @@ struct MASSquareHostView: View {
                             }
                         }
                     }
+                        .navigationBarHidden(self.showingSeachBar)
                         .navigationBarTitle(Text("广场"), displayMode: .inline)
                         .navigationBarItems(leading:
                             Button(action: {
@@ -54,19 +56,32 @@ struct MASSquareHostView: View {
                                 .imageScale(.large)
                                 .foregroundColor(.primary)
                             }), trailing:
-                            Button(action: {
-                                self.showingInputView.toggle()
-                            }, label: {
-                                Image(systemName: "square.and.pencil")
+                            
+                            HStack {
+                                NavigationLink(destination: MASSearchView(showingSeachBar: self.$showingSeachBar)) {
+                                    Image(systemName: "magnifyingglass")
                                     .imageScale(.large)
                                     .foregroundColor(.primary)
-                            })
+                                    .transition(.opacity)
+                                }
+                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20))
+                                    .animation(.easeIn)
+                                    
+                                Button(action: {
+                                    self.showingInputView.toggle()
+                                }, label: {
+                                    Image(systemName: "square.and.pencil")
+                                        .imageScale(.large)
+                                        .foregroundColor(.primary)
+                                })
+                            }
+                        
                         )
                             .sheet(isPresented: self.$showingInputView) {
-                            InputView {
-                                self.showingInputView.toggle()
+                                InputView {
+                                    self.showingInputView.toggle()
+                                }
                             }
-                        }
                 )
             }
         }
