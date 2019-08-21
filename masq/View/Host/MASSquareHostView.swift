@@ -15,14 +15,21 @@ struct MASSquareHostView: View {
     @State private var showingInputView = false
     @State private var showingMenuView = false
     @State private var showingSeachBar = false
-    
+    @State private var inputText = ""
+
     
     var body: some View {
         NavigationView {
             GeometryReader { geo in
                 AnyView(
                     ZStack {
-                        MASSquareListView(showingSheet: self.$showingSheet)
+                        VStack {
+                            MASSearchBarContanierView(text: self.$inputText)
+                                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                                
+                            
+                            MASSquareListView(showingSheet: self.$showingSheet)
+                        }
                         
                         if self.showingMenuView {
                             MASSquareMenuView(isShowMenu: self.$showingMenuView) {
@@ -56,25 +63,13 @@ struct MASSquareHostView: View {
                                 .imageScale(.large)
                                 .foregroundColor(.primary)
                             }), trailing:
-                            
-                            HStack {
-                                NavigationLink(destination: MASSearchView(showingSeachBar: self.$showingSeachBar)) {
-                                    Image(systemName: "magnifyingglass")
+                            Button(action: {
+                                self.showingInputView.toggle()
+                            }, label: {
+                                Image(systemName: "square.and.pencil")
                                     .imageScale(.large)
                                     .foregroundColor(.primary)
-                                    .transition(.opacity)
-                                }
-                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20))
-                                    .animation(.easeIn)
-                                    
-                                Button(action: {
-                                    self.showingInputView.toggle()
-                                }, label: {
-                                    Image(systemName: "square.and.pencil")
-                                        .imageScale(.large)
-                                        .foregroundColor(.primary)
-                                })
-                            }
+                            })
                         
                         )
                             .sheet(isPresented: self.$showingInputView) {
