@@ -9,9 +9,6 @@
 import SwiftUI
 
 struct MASTextView: UIViewRepresentable {
-    
-    var placeholder = ""
-    
     /// 文本改变
     var changeHandler:((String) -> Void)?
     
@@ -21,13 +18,11 @@ struct MASTextView: UIViewRepresentable {
     
     func makeUIView(context: UIViewRepresentableContext<MASTextView>) -> UITextView {
         let tv = UITextView()
-        tv.tintColor = .black
+        tv.tintColor = .secondaryLabel
         tv.font = UIFont.systemFont(ofSize: 18)
         tv.delegate = context.coordinator
         tv.returnKeyType = .default
         tv.becomeFirstResponder()
-        tv.text = placeholder
-        
         return tv
     }
     

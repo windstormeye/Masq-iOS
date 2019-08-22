@@ -15,6 +15,8 @@ struct MASSquareHostView: View {
     @State private var showingInputView = false
     @State private var showingMenuView = false
     @State private var showingSeachBar = false
+    @State var isPresenting = false
+
     @State private var inputText = ""
 
     
@@ -23,13 +25,7 @@ struct MASSquareHostView: View {
             GeometryReader { geo in
                 AnyView(
                     ZStack {
-                        VStack {
-                            MASSearchBarContanierView(text: self.$inputText)
-                                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
-                                
-                            
-                            MASSquareListView(showingSheet: self.$showingSheet)
-                        }
+                        MASSquareListView(showingSheet: self.$showingSheet)
                         
                         if self.showingMenuView {
                             MASSquareMenuView(isShowMenu: self.$showingMenuView) {
@@ -62,7 +58,9 @@ struct MASSquareHostView: View {
                                 Image(systemName: "list.dash")
                                 .imageScale(.large)
                                 .foregroundColor(.primary)
-                            }), trailing:
+                            })
+                                .frame(width: 25, height: 25)
+                            , trailing:
                             Button(action: {
                                 self.showingInputView.toggle()
                             }, label: {
@@ -70,6 +68,7 @@ struct MASSquareHostView: View {
                                     .imageScale(.large)
                                     .foregroundColor(.primary)
                             })
+                                .frame(width: 25, height: 25)
                         
                         )
                             .sheet(isPresented: self.$showingInputView) {

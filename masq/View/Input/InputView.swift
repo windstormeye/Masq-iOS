@@ -25,57 +25,58 @@ struct InputView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack(alignment: .center) {
-                Image("5")
-                    .resizable()
-                    .frame(width: 50.0,
-                           height: 50.0)
-                    .background(Color.green)
-                    .cornerRadius(40)
-                    .padding(EdgeInsets(top: 20,
-                                        leading: 20,
-                                        bottom:0,
-                                        trailing: 0))
-                
-                Spacer()
-                
-                Button(action: {
-                    MASCoreData.shared.persistentContainer.viewContext.performChanges {
+        Form {
+            Section(header:
+                VStack(alignment: .leading) {
+                    
+                    HStack {
+                        Image("5")
+                            .resizable()
+                            .frame(width: 50.0, height: 50.0)
+                            .background(Color.green)
+                            .cornerRadius(40)
+                            .padding(EdgeInsets(top: 10, leading: 10, bottom: 20, trailing: 0))
                         
-                        var article = Article.ViewModel()
-                        article.content = self.textString
-                        article.avatarColor = 0
-                        article.avatarImage = 0
-                        article.type = 0
+                        Text("你想说什么？")
+                            .font(.headline)
+                            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            MASCoreData.shared.persistentContainer.viewContext.performChanges {
+                                
+                                var article = Article.ViewModel()
+                                article.content = self.textString
+                                article.avatarColor = 0
+                                article.avatarImage = 0
+                                article.type = 0
 
-                        _ = Article.insert(viewModel: article)
+                                _ = Article.insert(viewModel: article)
+                                
+                                self.commit?()
+                            }
+                        }) {
+                            Image(systemName: "checkmark")
+                                .imageScale(.large)
+                                .foregroundColor(.primary)
+                        }
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom:0, trailing: 20))
                         
-                        self.commit?()
                     }
                 }) {
-                    Image(systemName: "checkmark")
-                        .imageScale(.large)
-                        .foregroundColor(.primary)
-                }
-                    .padding(EdgeInsets(top: 20,
-                                        leading: 0,
-                                        bottom:0,
-                                        trailing: 20))
+                    MASTextView {
+                        self.textString = $0
+                    }
+                        .frame(minWidth: 0,
+                               maxWidth: .infinity,
+                               maxHeight: 300,
+                               alignment: .topLeading)
+                        .padding(EdgeInsets(top: 0,
+                                            leading: 20,
+                                            bottom:0,
+                                            trailing: 20))
             }
-            
-            MASTextView(placeholder: "在 \(nowTimeString) 写下") { (text) in
-                self.textString = text
-            }
-                .frame(minWidth: 0,
-                       maxWidth: .infinity,
-                       minHeight: 0,
-                       maxHeight: .infinity,
-                       alignment: .topLeading)
-                .padding(EdgeInsets(top: 0,
-                                    leading: 20,
-                                    bottom:0,
-                                    trailing: 20))
         }
     }
 }
