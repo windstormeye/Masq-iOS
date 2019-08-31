@@ -25,7 +25,6 @@
 		0C7A51C922CDBE32002E0DA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A51C722CDBE32002E0DA4 /* LaunchScreen.storyboard */; };
 		0C8EAB16230C301500D9B4A7 /* MASSearchBarContanierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8EAB15230C301500D9B4A7 /* MASSearchBarContanierView.swift */; };
 		0C8EAB18230C301F00D9B4A7 /* MASSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8EAB17230C301F00D9B4A7 /* MASSearchBar.swift */; };
-		0C8EAB1B230C343100D9B4A7 /* MASSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8EAB1A230C343100D9B4A7 /* MASSearchView.swift */; };
 		0CA71EC622CE464B00A65887 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA71EC522CE464B00A65887 /* UserService.swift */; };
 		0CA71EC922CE46AB00A65887 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA71EC822CE46AB00A65887 /* Network.swift */; };
 		0CA71ECC22CE543F00A65887 /* String+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA71ECB22CE543F00A65887 /* String+Tools.swift */; };
@@ -62,7 +61,6 @@
 		0C7A51CA22CDBE32002E0DA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C8EAB15230C301500D9B4A7 /* MASSearchBarContanierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MASSearchBarContanierView.swift; sourceTree = "<group>"; };
 		0C8EAB17230C301F00D9B4A7 /* MASSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MASSearchBar.swift; sourceTree = "<group>"; };
-		0C8EAB1A230C343100D9B4A7 /* MASSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MASSearchView.swift; sourceTree = "<group>"; };
 		0CA71EC522CE464B00A65887 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		0CA71EC822CE46AB00A65887 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		0CA71ECB22CE543F00A65887 /* String+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Tools.swift"; sourceTree = "<group>"; };
@@ -236,7 +234,6 @@
 			isa = PBXGroup;
 			children = (
 				0C8EAB14230C2F9100D9B4A7 /* SearchBar */,
-				0C8EAB1A230C343100D9B4A7 /* MASSearchView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -409,7 +406,6 @@
 				0CDB1A1422F1DE0000CBECB4 /* String+Date.swift in Sources */,
 				0C0157F822EDCD2C00B2B7C9 /* MASCoreData.swift in Sources */,
 				0CDB1A0022EDF63C00CBECB4 /* Utilities.swift in Sources */,
-				0C8EAB1B230C343100D9B4A7 /* MASSearchView.swift in Sources */,
 				0C7A51BD22CDBE30002E0DA4 /* AppDelegate.swift in Sources */,
 				0CDB1A0B22F1D79800CBECB4 /* MASSquareListCellView.swift in Sources */,
 				0C7A51BF22CDBE30002E0DA4 /* SceneDelegate.swift in Sources */,

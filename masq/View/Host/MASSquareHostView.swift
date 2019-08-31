@@ -11,6 +11,8 @@ import Combine
 
 struct MASSquareHostView: View {
     
+    @ObservedObject var aritcleManager = AritcleManager()
+    
     @State private var showingSheet = false
     @State private var showingInputView = false
     @State private var showingMenuView = false
@@ -25,7 +27,20 @@ struct MASSquareHostView: View {
             GeometryReader { geo in
                 AnyView(
                     ZStack {
-                        MASSquareListView(showingSheet: self.$showingSheet)
+                        VStack() {
+                            MASSearchBar(text: self.$inputText, cancle: {
+                                self.showingSeachBar = false
+                                self.aritcleManager.reload()
+                            }) {
+                                self.aritcleManager.search(content: $0)
+                            }
+                                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 0))
+                            
+                            MASSquareListView(articles: self.$aritcleManager.articles,
+                                              showingSheet: self.$showingSheet) {
+                                                self.aritcleManager.articles[$0].delete()
+                            }
+                        }
                         
                         if self.showingMenuView {
                             MASSquareMenuView(isShowMenu: self.$showingMenuView) {
@@ -50,7 +65,7 @@ struct MASSquareHostView: View {
                         }
                     }
                         .navigationBarHidden(self.showingSeachBar)
-                        .navigationBarTitle(Text("广场"), displayMode: .inline)
+                        .navigationBarTitle(Text("笔记"), displayMode: .inline)
                         .navigationBarItems(leading:
                             Button(action: {
                                 self.showingMenuView.toggle()
@@ -61,14 +76,16 @@ struct MASSquareHostView: View {
                             })
                                 .frame(width: 25, height: 25)
                             , trailing:
-                            Button(action: {
-                                self.showingInputView.toggle()
-                            }, label: {
-                                Image(systemName: "square.and.pencil")
-                                    .imageScale(.large)
-                                    .foregroundColor(.primary)
-                            })
-                                .frame(width: 25, height: 25)
+                            HStack {
+                                Button(action: {
+                                    self.showingInputView.toggle()
+                                }, label: {
+                                    Image(systemName: "square.and.pencil")
+                                        .imageScale(.large)
+                                        .foregroundColor(.primary)
+                                })
+                                    .frame(width: 25, height: 25)
+                            }
                         
                         )
                             .sheet(isPresented: self.$showingInputView) {

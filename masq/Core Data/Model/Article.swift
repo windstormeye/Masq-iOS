@@ -15,14 +15,15 @@ class AritcleManager: NSObject, ObservableObject {
     var objectWillChange: ObservableObjectPublisher = ObservableObjectPublisher()
     
     var articles: [Article] = []
+    var searchArticles = [Article]()
     
     fileprivate var fetchedResultsController: NSFetchedResultsController<Article>
     
     override init() {
         let request = Article.sortedFetchRequest
-        request.fetchBatchSize = 20
-        request.returnsObjectsAsFaults = false
-        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: MASCoreData.shared.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request,
+                                                                   managedObjectContext: MASCoreData.shared.persistentContainer.viewContext,
+                                                                   sectionNameKeyPath: nil, cacheName: nil)
         
         super.init()
         
@@ -34,19 +35,28 @@ class AritcleManager: NSObject, ObservableObject {
         objectWillChange.send()
     }
     
-//    func fetch(page: Int) {
-//
-//    }
-//
-//    func objectAtIndexPath(_ indexPath: IndexPath) -> Article {
-//        return fetchedResultsController.object(at: indexPath)
-//    }
-//
-//    func reconfigureFetchRequest(_ configure: (NSFetchRequest<Article>) -> ()) {
-//        NSFetchedResultsController<NSFetchRequestResult>.deleteCache(withName: fetchedResultsController.cacheName)
-//        configure(fetchedResultsController.fetchRequest)
-//        do { try fetchedResultsController.performFetch() } catch { fatalError("fetch request failed") }
-//    }
+    func search(content: String) {
+        let request = Article.searchRequest(content: content)
+        request.fetchBatchSize = 20
+        request.returnsObjectsAsFaults = false
+        MASCoreData.shared.persistentContainer.viewContext.performChanges {
+            self.articles = try! MASCoreData.shared.persistentContainer.viewContext.fetch(request)
+            self.searchArticles = self.articles
+            
+            self.objectWillChange.send()
+        }
+    }
+    
+    /// 重新载入
+    func reload() {
+        guard searchArticles == articles else { return }
+        
+        let request = Article.sortedFetchRequest
+        MASCoreData.shared.persistentContainer.viewContext.performChanges {
+            self.articles = try! MASCoreData.shared.persistentContainer.viewContext.fetch(request)
+            self.objectWillChange.send()
+        }
+    }
 }
 
 // MARK: NSFetchedResultsControllerDelegate

@@ -24,6 +24,15 @@ extension Managed {
     static var sortedFetchRequest: NSFetchRequest<Self> {
         let request = NSFetchRequest<Self>(entityName: entityName)
         request.sortDescriptors = defaultSortDescriptors
+        request.fetchBatchSize = 20
+        request.returnsObjectsAsFaults = false
+        return request
+    }
+    
+    /// 创建搜索请求
+    static func searchRequest(content: String) -> NSFetchRequest<Self> {
+        let request = Self.sortedFetchRequest
+        request.predicate = NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Article.content), content)
         return request
     }
 }

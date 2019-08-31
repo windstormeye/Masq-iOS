@@ -10,23 +10,22 @@ import SwiftUI
 
 struct MASSquareListView : View {
     
-    @ObservedObject var aritcleManager = AritcleManager()
+    @Binding var articles: [Article]
     @Binding var showingSheet: Bool
         
     var onDelete: ((Int) -> ())?
     
     var body: some View {
         List {
-            ForEach(self.aritcleManager.articles) { article in
+            ForEach(articles) { article in
                 MASSquareNormalCellView(article: article)
-                .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                    .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
             }
             .onDelete {
                 guard let index = Array($0).first else { return }
-                self.aritcleManager.articles[index].delete()
+                self.onDelete?(index)
             }
         }
-    
     }
 }
 

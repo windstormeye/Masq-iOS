@@ -14,9 +14,7 @@ struct MASSquareNormalCellView : View {
     var article: Article
     
     var body: some View {
-        
-        return HStack(alignment: .top) {
-            
+        HStack(alignment: .top) {
             MASAvatarView(avatarImage: Int(article.avatarImage),
                           avatarColor: Int(article.avatarColor))
             
@@ -27,8 +25,9 @@ struct MASSquareNormalCellView : View {
                 
                 Text("\(article.content)")
                     .foregroundColor(.primary)
+                    .lineLimit(5)
             }
-            .frame(minHeight: 50)
+//            .frame(minHeight: 50, maxHeight: 200)
         }
     }
 }

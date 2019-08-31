@@ -10,25 +10,22 @@ import SwiftUI
 
 struct MASSearchBarContanierView: View {
     @Binding var text: String
-    @State private var isFirstResponder = false
-    
-//    var isBeginEdit: (() -> ())?
+    @Binding var isFirstResponder: Bool
+    @Binding var showCancleButton: Bool
+        
+    var search: ((String) -> ())?
     
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
-            CustomTextField(text: $text, isFirstResponder: $isFirstResponder)
-                .frame(height: 20)
-            
-            if !text.isEmpty {
-                Button(action: {
-                    self.text = ""
-                    self.isFirstResponder = false
-                }) {
-                    Image(systemName: "multiply.circle")
-                }
-                    .foregroundColor(.black)
+                .foregroundColor(.gray)
+                
+            MASTextField(text: $text,
+                         isFirstResponder: $isFirstResponder,
+                         showCancleButton: $showCancleButton) {
+                            self.search?($0)
             }
+                .frame(height: 20)
         }
             .padding(10)
             .background(Color(red: 240/255, green: 240/255, blue: 240/255))
@@ -37,43 +34,31 @@ struct MASSearchBarContanierView: View {
 }
 
 
-struct CustomTextField: UIViewRepresentable {
-
-    class Coordinator: NSObject, UITextFieldDelegate {
-
-        @Binding var text: String
-        @Binding var isFirstResponder: Bool
-
-
-        init(text: Binding<String>, isFirstResponder: Binding<Bool>) {
-            _text = text
-            _isFirstResponder = isFirstResponder
-        }
-
-        func textFieldDidChangeSelection(_ textField: UITextField) {
-            text = textField.text ?? ""
-        }
-        
-        func textFieldDidBeginEditing(_ textField: UITextField) {
-            isFirstResponder = true
-        }
-
-    }
+struct MASTextField: UIViewRepresentable {
 
     @Binding var text: String
     @Binding var isFirstResponder: Bool
-
-    func makeUIView(context: UIViewRepresentableContext<CustomTextField>) -> UITextField {
+    @Binding var showCancleButton: Bool
+    
+    var search: ((String) -> ())?
+    
+    func makeUIView(context: UIViewRepresentableContext<MASTextField>) -> UITextField {
         let textField = UITextField(frame: .zero)
+        textField.tintColor = .gray
+        textField.returnKeyType = .search
         textField.delegate = context.coordinator
         return textField
     }
 
-    func makeCoordinator() -> CustomTextField.Coordinator {
-        return Coordinator(text: $text, isFirstResponder: $isFirstResponder)
+    func makeCoordinator() -> MASTextField.Coordinator {
+        return Coordinator(text: $text,
+                           isFirstResponder: $isFirstResponder,
+                           showCancleButton: $showCancleButton,
+                           search: search)
     }
 
-    func updateUIView(_ uiView: UITextField, context: UIViewRepresentableContext<CustomTextField>) {
+    func updateUIView(_ uiView: UITextField,
+                      context: UIViewRepresentableContext<MASTextField>) {
         uiView.text = text
         
         if isFirstResponder {
@@ -81,5 +66,45 @@ struct CustomTextField: UIViewRepresentable {
         } else {
             uiView.resignFirstResponder()
         }
+    }
+    
+    
+    class Coordinator: NSObject, UITextFieldDelegate {
+
+        @Binding var text: String
+        @Binding var isFirstResponder: Bool
+        @Binding var showCancleButton: Bool
+
+        var search: ((String) -> ())?
+        
+        init(text: Binding<String>,
+             isFirstResponder: Binding<Bool>,
+             showCancleButton: Binding<Bool>,
+             search: ((String) -> ())?) {
+            
+            _text = text
+            _isFirstResponder = isFirstResponder
+            _showCancleButton = showCancleButton
+            
+            guard let search = search else { return }
+            self.search = search
+        }
+        
+        func textFieldDidBeginEditing(_ textField: UITextField) {
+            isFirstResponder = true
+            showCancleButton = true
+        }
+        
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            // 在此处创建了连接关系，`text` 不被赋值，无法溯源激发
+            text = textField.text ?? ""
+            
+            if text.count != 0 {
+                search?(text)
+            }
+            
+            return true
+        }
+
     }
 }
