@@ -10,7 +10,7 @@ import CoreData
 
 class MASCoreData {
     static let shared = MASCoreData()
-    var persistentContainer: NSPersistentContainer!
+    var persistentContainer: NSPersistentCloudKitContainer!
     
 //    init() {
 //        // 初始化容器
@@ -33,7 +33,7 @@ class MASCoreData {
     /// 创建一个存储容器
     class func createMASDataModel(completion: @escaping () -> ()) {
         // 名字要与 `.xcdatamodeleld` 文件名一致
-        let container = NSPersistentContainer(name: "MASDataModel")
+        let container = NSPersistentCloudKitContainer(name: "MASDataModel")
         
         container.loadPersistentStores { (_, err) in
             guard err == nil else { fatalError("Failed to load store: \(err!)") }

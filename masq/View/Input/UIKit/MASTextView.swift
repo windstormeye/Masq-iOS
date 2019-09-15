@@ -22,18 +22,18 @@ struct MASTextView: UIViewRepresentable {
         tv.font = UIFont.systemFont(ofSize: 18)
         tv.delegate = context.coordinator
         tv.returnKeyType = .default
-        tv.becomeFirstResponder()        
+        tv.becomeFirstResponder()
         return tv
     }
     
     func updateUIView(_ uiView: UITextView,
                       context: UIViewRepresentableContext<MASTextView>) {
-            
     }
     
     class Coordinator: NSObject, UITextViewDelegate {
         
         var masTextView: MASTextView
+        
         private var textView: UITextView? = nil
         // 是否开始编辑
         private(set) var isBeginEditng = false
@@ -51,15 +51,14 @@ struct MASTextView: UIViewRepresentable {
             textView.resignFirstResponder()
         }
         
-        
         func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
             self.textView = textView
-            
-            if !isBeginEditng {
-                isBeginEditng = true
-                textView.text = ""
-            }
             return true
+        }
+        
+        func textViewDidEndEditing(_ textView: UITextView) {
+            // 每次退出时都清空
+            textView.text = ""
         }
         
         func textViewDidChange(_ textView: UITextView) {
